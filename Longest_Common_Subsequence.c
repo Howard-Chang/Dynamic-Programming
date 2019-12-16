@@ -1,5 +1,5 @@
 Method1:
-/*#include<stdio.h>
+#include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 int max(int a,int b)
@@ -23,7 +23,7 @@ int main()
 	printf("The length of LCS is %d.",LCS(X, Y, strlen(X), strlen(Y)));
 
 	return 0;
-} */
+} 
 Method2:
 #include <stdio.h>
 #include <stdlib.h>
@@ -125,5 +125,44 @@ int main()
 
 	printf("The length of LCS is %d.",LCSLength(X,Y,strlen(X),strlen(Y),t));
 
+	return 0;
+}
+
+
+Method3:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int max(int a,int b)
+{
+	return a>b?a:b;
+}
+int LCS(char* X,char* Y)
+{
+	int len1=strlen(X),len2=strlen(Y);
+	int map[len1+1][len2+1];
+	for(int i=0;i<len1;i++)
+		map[i][0]=0;
+	for(int i=0;i<len2;i++)
+		map[0][i]=0;
+	for(int i=1;i<=len1;i++)
+	{
+		for(int j=1;j<=len2;j++)
+		{
+			if(X[i-1]==Y[j-1])
+			{
+				map[i][j]=map[i-1][j-1]+1;
+			}
+			else
+				map[i][j]=max(map[i][j-1],map[i-1][j]);
+		}
+	}
+	return map[len1][len2];
+}
+int main()
+{
+	char *X = "XMJYAUZ", *Y = "MZJAWXU";
+
+	printf("The length of LCS is %d", LCS(X, Y));
 	return 0;
 }
