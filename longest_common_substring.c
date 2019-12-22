@@ -37,3 +37,5 @@ int main()
 
 	return 0;
 }
+
+//https://www.techiedelight.com/longest-common-substring-problem/
