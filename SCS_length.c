@@ -5,7 +5,7 @@ int min(int a,int b)
 {
 	return a>b?b:a;
 }
-int lookup[20][25];
+
 int SCSLength(char* X, char* Y, int m, int n)
 {
 	if (m == 0 || n == 0)
